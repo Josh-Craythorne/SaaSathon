@@ -12,8 +12,8 @@ export default function ErrorPage({
       <h1 className="text-h2">Something didn’t load.</h1>
       <p className="my-6 text-sm leading-6 text-charcoal">
         Your request couldn’t be completed. Please try again. If you’re setting
-        up the starter, check your Supabase connection and apply the database
-        migration.
+        up SiteScribe, check your Supabase connection and apply the pending
+        database migrations.
       </p>
       <Button onClick={reset}>Try again</Button>
       <Link href="/" className="ml-5 text-sm underline">

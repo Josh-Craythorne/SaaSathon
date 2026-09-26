@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: { default: "SaaSathon Starter", template: "%s · SaaSathon Starter" },
-  description: "A small foundation for your next big idea.",
+  title: { default: "SiteScribe", template: "%s · SiteScribe" },
+  description: "Construction monitoring, clearly recorded. Private site observations, linked evidence and engineer-reviewed reports.",
 };
 export default function RootLayout({
   children,

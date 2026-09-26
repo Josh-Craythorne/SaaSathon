@@ -21,7 +21,8 @@ api_url = "http://127.0.0.1"
 enabled = true
 port = 55434
 [storage]
-enabled = false
+enabled = true
+file_size_limit = "8MiB"
 [auth]
 enabled = true
 site_url = "http://localhost:3000"

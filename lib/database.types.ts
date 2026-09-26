@@ -1,3 +1,5 @@
+import type { Project, Visit, Item, Evidence, Report } from "./sitescribe";
+type SiteTable<T, Required extends keyof T> = { Row: T; Insert: Partial<T> & Pick<T, Required>; Update: Partial<T>; Relationships: [] };
 export type Json =
   | string
   | number
@@ -34,6 +36,11 @@ export type Database = {
   };
   public: {
     Tables: {
+      projects: SiteTable<Project, "user_id" | "name" | "reference" | "address" | "client">;
+      visits: SiteTable<Visit, "user_id" | "project_id" | "date" | "engineer">;
+      items: SiteTable<Item, "user_id" | "project_id" | "title" | "number">;
+      evidence: SiteTable<Evidence, "user_id" | "project_id" | "visit_id" | "item_id" | "raw_notes" | "title" | "category" | "priority" | "status">;
+      reports: SiteTable<Report, "user_id" | "project_id" | "visit_id" | "snapshot" | "state">;
       ideas: {
         Row: {
           created_at: string;
@@ -63,7 +70,10 @@ export type Database = {
       [_ in never]: never;
     };
     Functions: {
-      [_ in never]: never;
+      save_observation: { Args: { p: Json }; Returns: string };
+      begin_transcription: { Args:{p_id:string;p_visit:string;p_digest:string}; Returns:Json };
+      finish_transcription: { Args:{p_id:string;p_lease:string;p_text:string|null}; Returns:undefined };
+      load_sitescribe_demo: { Args: { paths: string[] }; Returns: string };
     };
     Enums: {
       [_ in never]: never;
